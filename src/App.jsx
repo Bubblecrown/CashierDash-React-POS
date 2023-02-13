@@ -7,6 +7,10 @@ import Cart from "./features/cart/Cart.jsx";
 import Orders from "./features/cart/Orders.jsx";
 import Layout from "./ui/Layout.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+
+const baseURL = "https://dummyjson.com/";
+axios.defaults.baseURL = baseURL;
 
 function App() {
   return (

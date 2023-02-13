@@ -9,10 +9,10 @@ const Products = () => {
   const fetchProduct = async () => {
     let queryString = query ? `search?q=${query}` : "";
     const data = await axios.get(
-      `https://dummyjson.com/products/${queryString}`
+      `/products/${queryString}`
     );
     setProducts(data.data);
-    console.log(data.data);
+
   };
   useEffect(() => {
     fetchProduct();
