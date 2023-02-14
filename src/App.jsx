@@ -10,12 +10,15 @@ import {
 import Layout from "./Layout/Layout.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const baseURL = "https://dummyjson.com/";
 axios.defaults.baseURL = baseURL;
 
 function App() {
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -29,6 +32,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
   );
 }
 
