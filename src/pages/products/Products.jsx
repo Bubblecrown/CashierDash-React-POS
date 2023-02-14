@@ -1,18 +1,16 @@
 import axios from "axios";
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
-import { Form, Stack, Button } from "react-bootstrap";
+import { Form, Stack, Button, Row } from "react-bootstrap";
+import ProductItems from "../../../components/ProductItems";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
   const fetchProduct = async () => {
     let queryString = query ? `search?q=${query}` : "";
-    const data = await axios.get(
-      `/products/${queryString}`
-    );
+    const data = await axios.get(`/products/${queryString}`);
     setProducts(data.data);
-
   };
   useEffect(() => {
     fetchProduct();
@@ -37,7 +35,11 @@ const Products = () => {
       {isEmpty(products.products) ? (
         <div>No product found.</div>
       ) : (
-        <div>product</div>
+        <Row xs={1} md={2} lg={3} className="py-2 g-3">
+          {products.products.map((product) => (
+            <ProductItems key={product.id} product={product} />
+          ))}
+        </Row>
       )}
     </>
   );

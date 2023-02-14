@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Products from "./features/products/Products.jsx";
-import AddProduct from "./features/products/AddProduct.jsx";
-import EditProduct from "./features/products/EditProduct.jsx";
-import ProductDetail from "./features/products/ProductDetail.jsx";
-import Cart from "./features/cart/Cart.jsx";
-import Orders from "./features/cart/Orders.jsx";
-import Layout from "./ui/Layout.jsx";
+import {
+  Products,
+  AddProduct,
+  EditProduct,
+  ProductDetail,
+  Cart,
+  Orders,
+} from "./pages/index";
+import Layout from "./Layout/Layout.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 

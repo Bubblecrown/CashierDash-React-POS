@@ -1,0 +1,6 @@
+export {default as Products} from './products/Products' 
+export {default as AddProduct} from './products/AddProduct' 
+export {default as EditProduct} from './products/EditProduct' 
+export {default as ProductDetail} from './products/ProductDetail' 
+export {default as Cart} from './cart/Cart' 
+export {default as Orders} from './cart/Orders' 
