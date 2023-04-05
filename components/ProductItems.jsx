@@ -1,13 +1,19 @@
 import React from "react";
 import { Badge, Button, Card, Col } from "react-bootstrap";
 import QuantityControl from "./QuantityControl";
+import { useMediaQuery } from "react-responsive";
 
 const ProductItems = ({ product }) => {
+  const isMobile = useMediaQuery({ query: "(max-width: 435px)" });
   return (
     <Col>
       <Card className="h-100">
         <Card.Img
-          style={{ height: "200px", maxWidth: "fit-content", margin: "0 auto" }}
+          style={{
+            height: isMobile ? "auto" : "200px",
+            maxWidth: "fit-content",
+            margin: "0 auto",
+          }}
           src={product.images[0]}
         />
         <Card.Body>
@@ -24,7 +30,9 @@ const ProductItems = ({ product }) => {
         <Card.Footer style={{ backgroundColor: "#fff", borderTop: "none" }}>
           <Card.Text className="fw-bold">${product.price}</Card.Text>
           <QuantityControl product={product} />
-          <Button className="mt-auto" variant="warning">Add to cart</Button>
+          <Button className="mt-auto" variant="warning">
+            Add to cart
+          </Button>
         </Card.Footer>
       </Card>
     </Col>
