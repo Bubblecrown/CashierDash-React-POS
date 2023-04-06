@@ -1,41 +1,49 @@
 import React from "react";
-import { Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Col, Container, ListGroup, Row, Stack } from "react-bootstrap";
 import QuantityControl from "./QuantityControl";
 import { useMediaQuery } from "react-responsive";
+import { sumBy } from "lodash";
 
 const OrderDetails = ({ products }) => {
-  if (!Array.isArray(products)) {
-    console.log(products);
-  }
+  // if (!Array.isArray(products)) {
+  //   console.log(products);
+  // }
   const productList = Object.values(products);
-  const isMobile = useMediaQuery({ query: "(max-width: 435px)" });
-
+  const isMobile = useMediaQuery({ query: "(max-width: 986px)" });
+  const total_products = sumBy(
+    productList,
+    (product) => product.quantity * product.price
+  );
   return (
-    <Container>
-      <ListGroup as="ol" numbered variant="flush">
+    <>
+      <ListGroup numbered as="ol" variant="flush">
         {productList.map((product) => (
-          <ListGroup.Item as="li" key={product.id} className="d-flex ">
-            <Col className="ms-3 col-md-2">
+          <ListGroup.Item as="li" key={product.sku} className="d-flex flex-wrap">
+            <div className="ms-3 col-xs-1 col-sm-3 col-md-2">
               <img
-                src={product.image}
+                src={`http://127.0.0.1:5000/${product.image}`}
                 style={{
                   height: isMobile ? "auto" : "100px",
-                  maxWidth: "fit-content",
-                  display: "flex",
-                  justifyContent: "start",
+                  maxWidth: "100px",
+                  minWidth: "80px",
                 }}
               />
-            </Col>
-            <div className="mt-auto ms-4 flex-grow-1 d-flex ">
-              <h1 className="fs-5 fw-bold"> {product.name}</h1>
-              <div>
+            </div>
+            <div className="mt-auto ms-4 flex-grow-1 d-flex flex-wrap">
+              <h1 className="fs-5 fw-bold col-sm-3 fs-xs-2"> {product.name}</h1>
+              <div className="ms-auto">
                 <QuantityControl product={product} />
               </div>
             </div>
           </ListGroup.Item>
         ))}
       </ListGroup>
-    </Container>
+      <hr />
+      <Stack direction="horizontal">
+        <div>Total</div>
+        <div className="ms-auto">{total_products.toLocaleString()}</div>
+      </Stack>
+    </>
   );
 };
 

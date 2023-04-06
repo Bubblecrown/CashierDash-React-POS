@@ -8,7 +8,7 @@ const QuantityControl = ({product}) => {
   // all products from store
   const products = useSelector((state)=> state.cart.products)
   // only product identify by id
-  const orderProduct = products[product.id]
+  const orderProduct = products[product.sku]
   return (
     <Stack direction="horizontal" className="mb-3">
       <Button variant="light" onClick={()=> dispatch(removeFromCart(product))}> - </Button>

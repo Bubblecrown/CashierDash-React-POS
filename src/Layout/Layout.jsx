@@ -19,12 +19,12 @@ const Layout = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/product">Products</Nav.Link>
+              <Nav.Link as={Link} to="/products">Products</Nav.Link>
               <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
               <Nav.Link as={Link} to="/orders">Order</Nav.Link>
             </Nav>
             <Nav>
-              <Button variant="outline-success" as={Link} to="/product/new">Create</Button>
+              <Button variant="outline-success" as={Link} to="/products/new">Create</Button>
             </Nav>
           </Navbar.Collapse>
         </Container>

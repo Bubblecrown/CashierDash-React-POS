@@ -14,18 +14,18 @@ const ProductItems = ({ product }) => {
             maxWidth: "fit-content",
             margin: "0 auto",
           }}
-          src={product.images[0]}
+          src={`http://127.0.0.1:5000/${product.image}`}
         />
         <Card.Body>
           <Card.Title>
             <Col>
               <Badge bg="secondary" text="light" className="mb-2">
-                {product.category}
+                {product.category.name}
               </Badge>
-              <h1 className="fs-5"> {product.title}</h1>
+              <h1 className="fs-5"> {product.name}</h1>
             </Col>
           </Card.Title>
-          <Card.Text>{product.description}</Card.Text>
+          <Card.Text>{product.desc}</Card.Text>
         </Card.Body>
         <Card.Footer style={{ backgroundColor: "#fff", borderTop: "none" }}>
           <Card.Text className="fw-bold">${product.price}</Card.Text>

@@ -13,25 +13,25 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 
-const baseURL = "https://dummyjson.com/";
+const baseURL = "http://127.0.0.1:5000";
 axios.defaults.baseURL = baseURL;
 
 function App() {
   return (
     <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="product" />} />
-          <Route path="product" element={<Products />} />
-          <Route path="product/new" element={<AddProduct />} />
-          <Route path="product/:id" element={<ProductDetail />} />
-          <Route path="product/:id/edit" element={<EditProduct />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="orders" element={<Orders />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Navigate to="products" />} />
+            <Route path="products" element={<Products />} />
+            <Route path="products/new" element={<AddProduct />} />
+            <Route path="products/:id" element={<ProductDetail />} />
+            <Route path="products/:id/edit" element={<EditProduct />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }

@@ -8,8 +8,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
   const fetchProduct = async () => {
-    let queryString = query ? `search?q=${query}` : "";
-    const data = await axios.get(`/products/${queryString}`);
+    let queryString = query ? `?search=${query}` : "";
+    const data = await axios.get(`/products${queryString}`);
     setProducts(data.data);
   };
   useEffect(() => {
@@ -32,11 +32,11 @@ const Products = () => {
           Search
         </Button>
       </Stack>
-      {isEmpty(products.products) ? (
+      {isEmpty(products) ? (
         <div>No product found.</div>
       ) : (
         <Row xs={1} md={2} lg={3} className="py-2 g-3">
-          {products.products.map((product) => (
+          {products.map((product) => (
             <ProductItems key={product.id} product={product} />
           ))}
         </Row>
