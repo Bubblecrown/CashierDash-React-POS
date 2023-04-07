@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: {},
-  customerInfo: {},
+  customerInfo: null,
 };
 const cartSlice = createSlice({
   name: "cart",
@@ -35,12 +35,12 @@ const cartSlice = createSlice({
     clear() {
       return initialState;
     },
-    setCustomerInfo({ customerInfo }, action) {
+    setCustomerInfo(state, action) {
       const { field, value } = action.payload;
       // If the customerInfo variable is falsy, it sets it to an empty object {}.
       // falsy (e.g., null, undefined, false, 0, '', or NaN)
-
-      customerInfo[field] = value;
+      if (!state.customerInfo) state.customerInfo = {};
+      state.customerInfo[field] = value;
     },
   },
 });

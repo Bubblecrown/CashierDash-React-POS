@@ -21,6 +21,7 @@ const Cart = () => {
     dispatch(clear());
     navigate("/products");
   };
+
   if (isEmpty(products))
     return (
       <Container>

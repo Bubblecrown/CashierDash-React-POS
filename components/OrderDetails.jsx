@@ -4,7 +4,7 @@ import QuantityControl from "./QuantityControl";
 import { useMediaQuery } from "react-responsive";
 import { sumBy } from "lodash";
 
-const OrderDetails = ({ products }) => {
+const OrderDetails = ({ products, editable = true }) => {
   // if (!Array.isArray(products)) {
   //   console.log(products);
   // }
@@ -18,21 +18,34 @@ const OrderDetails = ({ products }) => {
     <>
       <ListGroup numbered as="ol" variant="flush">
         {productList.map((product) => (
-          <ListGroup.Item as="li" key={product.sku} className="d-flex flex-wrap">
-            <div className="ms-3 col-xs-1 col-sm-3 col-md-2">
+          <ListGroup.Item
+            as="li"
+            key={product.sku}
+            className="d-flex flex-wrap"
+          >
+            <div className="ms-3 col-xs-1 col-sm-3 col-md-4 col-lg-2">
               <img
                 src={`http://127.0.0.1:5000/${product.image}`}
                 style={{
-                  height: isMobile ? "auto" : "100px",
-                  maxWidth: "100px",
+                  height: isMobile ? "auto" : "100%",
+                  maxWidth: "100%",
                   minWidth: "80px",
                 }}
               />
             </div>
-            <div className="mt-auto ms-4 flex-grow-1 d-flex flex-wrap">
-              <h1 className="fs-5 fw-bold col-sm-3 fs-xs-2"> {product.name}</h1>
-              <div className="ms-auto">
-                <QuantityControl product={product} />
+            <div className="mt-2 ms-4 flex-grow-1 d-flex flex-wrap">
+              <h1 className="fs-5 fw-bold col-sm-5 fs-xs-2">
+                {product.name}
+              </h1>
+              <div className="ms-auto text-end">
+                {editable ? (
+                  <QuantityControl product={product} />
+                ) : (
+                  product.quantity
+                )}
+              </div>
+              <div className="ms-auto text-end col-sm-3">
+                <p>{product.price.toLocaleString()}</p>
               </div>
             </div>
           </ListGroup.Item>

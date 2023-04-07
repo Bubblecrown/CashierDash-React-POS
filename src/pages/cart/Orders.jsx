@@ -2,6 +2,7 @@ import axios from "axios";
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import OrderDetails from "../../../components/OrderDetails";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -28,14 +29,16 @@ const Orders = () => {
     );
   return (
     <Container>
-      <Row xs={1} md={2} className="g-2 my-2">
+      <Row sm={1} md={2} className="g-2 my-2">
         {orders.map((order) => (
           <Col key={order.id}>
             <Card>
               <Card.Header>
                 {order.name || "Guest"}, {order.email || "์N/A"},
               </Card.Header>
-              <Card.Body></Card.Body>
+              <Card.Body>
+                <OrderDetails products={order.products} editable={false}/>
+              </Card.Body>
             </Card>
           </Col>
         ))}

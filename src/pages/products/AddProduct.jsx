@@ -1,9 +1,10 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import ProductForm from '../../../components/ProductForm'
 
 const NewProduct = () => {
   return (
-    <Container>NewProduct</Container>
+    <Container><ProductForm/></Container>
   )
 }
 
