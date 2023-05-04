@@ -1,7 +1,8 @@
 import React from "react";
 import { Form, FormGroup, FormLabel } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { setCustomerInfo } from "../src/pages/cart/cartSlice";
+import { setCustomerInfo } from "../pages/cart/cartSlice";
+
 
 const CustomerInfo = () => {
   const dispatch = useDispatch();

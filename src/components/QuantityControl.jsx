@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge, Button, Stack } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../src/pages/cart/cartSlice";
+import { addToCart, removeFromCart } from "../pages/cart/cartSlice";
 
 const QuantityControl = ({product}) => {
   const dispatch = useDispatch()
