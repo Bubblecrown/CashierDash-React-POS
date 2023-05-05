@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-const ProductForm = ({ onSubmit }) => {
+const ProductForm = ({ onSubmit, currentProduct }) => {
   const [categories, setCategories] = useState([]);
   const {
     register,
@@ -11,6 +11,7 @@ const ProductForm = ({ onSubmit }) => {
     formState: { errors },
   } = useForm({
     mode: "onTouched",
+    defaultValues: currentProduct,
   });
   const submit = (formValue) => {
     onSubmit({ ...formValue, image: formValue.image[0] });
@@ -18,9 +19,10 @@ const ProductForm = ({ onSubmit }) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await axios.get(`/categories`);
+      const res = await axios.get("/categories");
       setCategories(res.data);
     };
+
     fetchCategories();
   }, []);
 
@@ -140,7 +142,10 @@ const ProductForm = ({ onSubmit }) => {
         <Form.Control
           type="file"
           isInvalid={!!errors.image}
-          {...register("image", { required: "Image is a required field." })}
+          {...register(
+            "image",
+            currentProduct ? {} : { required: "Image is a required field." }
+          )}
         ></Form.Control>
         <Form.Control.Feedback type="invalid">
           {errors.image?.message}
@@ -149,7 +154,7 @@ const ProductForm = ({ onSubmit }) => {
       {/* end image */}
 
       <Button type="submit" className="mb-3">
-        Create
+        {currentProduct ? "Update" : "Create"}
       </Button>
     </Form>
   );
