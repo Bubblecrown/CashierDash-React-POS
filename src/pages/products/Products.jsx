@@ -2,7 +2,7 @@ import axios from "axios";
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { Form, Stack, Button, Row } from "react-bootstrap";
-import ProductItems from "../../components/ProductItems";
+import ProductItems from "@/components/ProductItems";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

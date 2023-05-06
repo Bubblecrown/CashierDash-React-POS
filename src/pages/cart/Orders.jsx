@@ -2,7 +2,7 @@ import axios from "axios";
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import OrderDetails from "../../components/OrderDetails";
+import OrderDetails from "@/components/OrderDetails";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
