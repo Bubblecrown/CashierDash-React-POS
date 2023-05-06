@@ -19,7 +19,7 @@ const ProductItems = ({ product }) => {
               maxWidth: "fit-content",
               margin: "0 auto",
             }}
-            src={`http://127.0.0.1:5000/${product.image}`}
+            src={`${process.env.VITE_APP_API_URL}/${product.image}`}
           />
           <Card.Body>
             <Card.Title>

@@ -9,7 +9,9 @@ const Products = () => {
   const [query, setQuery] = useState("");
   const fetchProduct = async () => {
     let queryString = query ? `?search=${query}` : "";
-    const data = await axios.get(`/products${queryString}`);
+    const data = await axios.get(
+      `${process.env.VITE_APP_API_URL}/products${queryString}`
+    );
     setProducts(data.data);
   };
   useEffect(() => {

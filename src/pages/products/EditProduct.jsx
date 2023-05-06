@@ -14,7 +14,7 @@ const EditProduct = () => {
   const [product, setProduct] = useState();
   const updateProduct = async (product) => {
     try {
-      await axios.patch(`/products/${id}`, product, {
+      await axios.patch(`${process.env.VITE_APP_API_URL}/products/${id}`, product, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -32,7 +32,7 @@ const EditProduct = () => {
   };
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/products/${id}`);
+      const { data } = await axios.get(`${process.env.VITE_APP_API_URL}/products/${id}`);
       const product = omit(data, ["id", "category"]);
       setProduct({ ...product, categoryId: data.category.id });
     };

@@ -15,12 +15,14 @@ const ProductDetail = () => {
   const [product, setProduct] = useState();
   const navigate = useNavigate();
   const deleteProduct = async () => {
-    await axios.delete(`/products/${id}`);
+    await axios.delete(`${process.env.VITE_APP_API_URL}/products/${id}`);
     navigate("/products");
   };
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await axios.get(`/products/${id}`);
+      const res = await axios.get(
+        `${process.env.VITE_APP_API_URL}/products/${id}`
+      );
       setProduct(res.data);
     };
     fetchProduct();
@@ -43,7 +45,7 @@ const ProductDetail = () => {
       <Row className="mb-3">
         <Col md={4}>
           <img
-            src={`http://127.0.0.1:5000/${product.image}`}
+            src={`${process.env.VITE_APP_API_URL}/${product.image}`}
             alt={`${product.name}`}
             className="w-100"
           />

@@ -12,7 +12,7 @@ const NewProduct = () => {
   const createProduct = async (product) => {
     try {
       // if data in form has file input then it need headers
-      await axios.post(`/products`, product, {
+      await axios.post(`${process.env.VITE_APP_API_URL}/products`, product, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

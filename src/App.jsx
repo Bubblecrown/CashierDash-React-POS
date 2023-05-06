@@ -13,8 +13,8 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 
-const baseURL = "http://127.0.0.1:5000";
-axios.defaults.baseURL = baseURL;
+// const baseURL = "http://127.0.0.1:5000";
+// axios.defaults.baseURL = baseURL;
 
 function App() {
   return (

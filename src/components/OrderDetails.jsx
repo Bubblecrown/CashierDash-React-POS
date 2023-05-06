@@ -25,7 +25,7 @@ const OrderDetails = ({ products, editable = true }) => {
           >
             <div className="ms-3 col-xs-1 col-sm-3 col-md-4 col-lg-2">
               <img
-                src={`http://127.0.0.1:5000/${product.image}`}
+                src={`${process.env.VITE_APP_API_URL}/${product.image}`}
                 style={{
                   height: isMobile ? "auto" : "100%",
                   maxWidth: "100%",

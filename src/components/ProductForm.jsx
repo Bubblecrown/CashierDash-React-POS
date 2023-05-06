@@ -19,8 +19,9 @@ const ProductForm = ({ onSubmit, currentProduct }) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await axios.get("/categories");
+      const res = await axios.get(`${process.env.VITE_APP_API_URL}/categories`);
       setCategories(res.data);
+      console.log(currentProduct);
     };
 
     fetchCategories();
@@ -97,7 +98,7 @@ const ProductForm = ({ onSubmit, currentProduct }) => {
 
       {/* category */}
       <Form.Group className="mb-3">
-        <Form.Label>category</Form.Label>
+        <Form.Label>Category</Form.Label>
         <Form.Select
           isInvalid={!!errors.categoryId}
           {...register("categoryId", {
@@ -107,7 +108,7 @@ const ProductForm = ({ onSubmit, currentProduct }) => {
         >
           <option value={null}>Select Category</option>
           {categories.map((category) => (
-            <option value={category.id} key={category.id}>
+            <option key={category.id} value={category.id}>
               {category.name}
             </option>
           ))}
